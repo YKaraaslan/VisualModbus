@@ -1,0 +1,183 @@
+﻿<UserControl x:Class="VisualUNITY.TensionControl.Device"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:VisualUNITY.TensionControl"
+            xmlns:language ="clr-namespace:VisualUNITY.Languages"
+            xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            mc:Ignorable="d" Background="White"
+            Height="599.5" Width="1250" Unloaded="UserControl_Unloaded">
+    <Grid>
+        <WrapPanel Height="95" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <materialDesign:Card Width="80" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid>
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="-" Foreground="Black" 
+                            BorderBrush="Transparent" FontSize="22"  Height="40" VerticalAlignment="Center"
+                            x:Name="pid_p" Style="{StaticResource MaterialDesignOutlinedButton}"  Click="kp_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Kp" Margin="15,43,15,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="80" Margin="50 10 50 0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid>
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="-" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="22"  Height="40" VerticalAlignment="Center"
+                            x:Name="pid_i" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Ki" Margin="15,43,15,9" Foreground="red" x:Name="ss"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="80" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid>
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="-" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="22"  Height="40" VerticalAlignment="Center"
+                            x:Name="pid_d" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Kd" Margin="15,43,15,9" Foreground="red" x:Name="sd"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Margin="50 10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid>
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="-" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="22"  Height="40" VerticalAlignment="Center"
+                            x:Name="tension" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="{x:Static language:language.tension}" Margin="15,43,15,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Margin="0 10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid>
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="-" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="22"  Height="40" VerticalAlignment="Center"
+                            x:Name="tensionSet" Style="{StaticResource MaterialDesignOutlinedButton}" Click="tensionSet_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="{x:Static language:language.tensionSet}" Margin="15,43,15,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+        </WrapPanel>
+
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Bottom" DisableAnimations="True" 
+                            Margin="10 100 15 160" Grid.RowSpan="2">
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Labels="{Binding Labels}"></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+        </lvc:CartesianChart>
+        <Border Background="IndianRed" CornerRadius="10" HorizontalAlignment="Center" 
+            Height="100" Margin="0 0 0 30" VerticalAlignment="Bottom">
+
+            <WrapPanel Height="100">
+
+                <Grid>
+                    <Label x:Name="start" Content="{x:Static language:language.start}" VerticalAlignment="Top" FontSize="15" 
+                       HorizontalAlignment="Left" Foreground="White" Margin="10,8,10,0" Width="67"
+                       HorizontalContentAlignment="Center"/>
+                    <materialDesign:Card Width="40" Margin="24,36,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                     Height="41" PreviewMouseLeftButtonDown="start_PreviewMouseLeftButtonDown">
+                        <materialDesign:PackIcon Kind="Restart" Width="20" Height="20" VerticalAlignment="Center" 
+                                              HorizontalAlignment="Center" />
+
+                    </materialDesign:Card>
+                </Grid>
+
+                <Grid HorizontalAlignment="Left">
+                    <Label x:Name="label2" Content="{x:Static language:language.stop}" VerticalAlignment="Top" FontSize="15" 
+                       HorizontalAlignment="Left" Foreground="White" Margin="0,8,0,0" Width="68"
+                           HorizontalContentAlignment="Center"/>
+                    <materialDesign:Card Width="40" Margin="0,36,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" 
+                                     Height="41"  PreviewMouseLeftButtonDown="stop_PreviewMouseLeftButtonDown">
+                        <materialDesign:PackIcon Kind="StopCircleOutline" Width="20" Height="20" VerticalAlignment="Center" 
+                                              HorizontalAlignment="Center" />
+
+                    </materialDesign:Card>
+                </Grid>
+
+                <Grid Margin="30 0 0 0">
+                    <Label Content="{x:Static language:language.tare}" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                               Margin="0,8,0,0" Foreground="White" FontSize="15" />
+                    <materialDesign:Card Width="40" Margin="0,36,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" 
+                    Height="42"  PreviewMouseLeftButtonDown="tare_PreviewMouseLeftButtonDown">
+                        <Grid>
+                            <materialDesign:PackIcon Kind="CircleDouble" Width="20" Height="20" VerticalAlignment="Center" 
+                        HorizontalAlignment="Center"/>
+
+                        </Grid>
+
+                    </materialDesign:Card>
+                </Grid>
+
+                <Grid Margin="15 0 0 0">
+                    <Label x:Name="labesl" Content="{x:Static language:language.increase}" VerticalAlignment="Top" FontSize="15" 
+                       HorizontalAlignment="Center" Foreground="White" Margin="10,8,10,0" Width="67"
+                       HorizontalContentAlignment="Center"/>
+                    <materialDesign:Card Width="40" Margin="0,36,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" 
+                                     Height="41"  PreviewMouseLeftButtonDown="up_PreviewMouseLeftButtonDown">
+                        <materialDesign:PackIcon Kind="ChevronUp" Width="20" Height="20" VerticalAlignment="Center" 
+                                              HorizontalAlignment="Center" />
+                    </materialDesign:Card>
+                </Grid>
+
+                <Grid Margin="10 0 10 0">
+                    <Label x:Name="labsel2" Content="{x:Static language:language.decrease}" VerticalAlignment="Top" FontSize="15" 
+                       HorizontalAlignment="Center" Foreground="White" Margin="2,8,0,0" Width="68"
+                       HorizontalContentAlignment="Center"/>
+                    <materialDesign:Card Width="40" Margin="0,36,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" 
+                                     Height="41"  PreviewMouseLeftButtonDown="down_PreviewMouseLeftButtonDown">
+                        <materialDesign:PackIcon Kind="ChevronDown" Width="20" Height="20" VerticalAlignment="Center" 
+                                              HorizontalAlignment="Center" />
+
+                    </materialDesign:Card>
+                </Grid>
+            </WrapPanel>
+        </Border>
+
+        <Border Background="IndianRed" CornerRadius="10" HorizontalAlignment="Center" 
+            Height="100" Margin="700 0 0 30" VerticalAlignment="Bottom" Width="200">
+
+            <Grid>
+                <Label VerticalAlignment="Top" HorizontalAlignment="Center" Content="{x:Static language:language.graphicRange}" FontSize="15" Foreground="White"
+                       Margin="0 8"/>
+
+                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 15 0 0">
+                    <materialDesign:Card Width="40" VerticalAlignment="Top" HorizontalAlignment="Center" 
+                                     Height="41"  PreviewMouseLeftButtonDown="minus_PreviewMouseLeftButtonDown">
+                        <materialDesign:PackIcon Kind="Minus" Width="20" Height="20" VerticalAlignment="Center" 
+                                              HorizontalAlignment="Center" />
+
+                    </materialDesign:Card>
+                    <Label Content="-" Width="50" Margin="10 0 10 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                           FontSize="15" Foreground="White" x:Name="range"/>
+                    <materialDesign:Card Width="40" VerticalAlignment="Top" HorizontalAlignment="Center" 
+                                     Height="41"  PreviewMouseLeftButtonDown="plus_PreviewMouseLeftButtonDown">
+                        <materialDesign:PackIcon Kind="Plus" Width="20" Height="20" VerticalAlignment="Center" 
+                                              HorizontalAlignment="Center" />
+                    </materialDesign:Card>
+                </WrapPanel>
+            </Grid>
+        </Border>
+        
+        <Ellipse x:Name="ellipseConnected" Fill="IndianRed" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,17,139,0"
+                 Height="30" Width="30"/>
+        <Border CornerRadius="10" Width="100" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right"
+                Margin="0 5 20 5" Background="#FF00DEFF">
+            <Label Content="00:00:00" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"
+                   x:Name="labelTime" Foreground="White"/>
+        </Border>
+
+        <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="Snackbar"
+                                     VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="291,0,291,5.8" Grid.Row="2" />
+    </Grid>
+</UserControl>

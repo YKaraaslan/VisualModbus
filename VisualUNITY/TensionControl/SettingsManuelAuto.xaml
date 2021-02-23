@@ -1,0 +1,68 @@
+﻿<Window x:Class="VisualUNITY.TensionControl.SettingsManuelAuto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VisualUNITY.TensionControl" Icon="Assets\Logo.ico"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        xmlns:language ="clr-namespace:VisualUNITY.Languages"
+        Title="{x:Static language:language.unityModBusStudio}" Height="229.854" Width="726.094">
+    <Grid VerticalAlignment="Top" HorizontalAlignment="Left">
+        <WrapPanel VerticalAlignment="Top" Margin="15 40 0 0">
+            <materialDesign:Card Width="130" Margin="0 10" VerticalAlignment="Top" 
+                                 HorizontalAlignment="Left" Height="68" x:Name="oneCard">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="Loadcell" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"
+                            x:Name="one" Style="{StaticResource MaterialDesignOutlinedButton}" Click="one_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="1" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="50,10,0,0" VerticalAlignment="Top" 
+                                 HorizontalAlignment="Left" Height="68" x:Name="twoCard">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="Manuel" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"
+                            x:Name="two" Style="{StaticResource MaterialDesignOutlinedButton}" Click="two_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="2" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="50,10,0,0" VerticalAlignment="Top" 
+                                 HorizontalAlignment="Left" Height="68" x:Name="threeCard">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="Dancer" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"
+                            x:Name="three" Style="{StaticResource MaterialDesignOutlinedButton}" Click="three_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="3" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="50,10,0,0" VerticalAlignment="Top" 
+                                 HorizontalAlignment="Left" Height="68" x:Name="fourCard">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="Auto" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"
+                            x:Name="four" Style="{StaticResource MaterialDesignOutlinedButton}" Click="four_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="4" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+        </WrapPanel>
+        <Label x:Name="label" Content="{x:Static language:language.selectParameter}" Foreground="Black" 
+               HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top"/>
+
+        <Button Width="130" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                        Content="{x:Static language:language.save}" Background="#FF65B73A" Margin="0,0,0,-47"
+                        BorderBrush="#FF65B73A" Click="save_Click"/>
+    </Grid>
+</Window>

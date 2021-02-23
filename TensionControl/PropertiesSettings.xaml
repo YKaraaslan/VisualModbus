@@ -1,0 +1,287 @@
+﻿<UserControl x:Class="TensionControl.PropertiesSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TensionControl"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" Background="White" Height="762.933" Width="1249.334">
+
+    <Grid Margin="50 10 0 0">
+        <WrapPanel VerticalAlignment="Top">
+            <materialDesign:Card Width="130" Margin="0 10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="kp" Style="{StaticResource MaterialDesignOutlinedButton}" Click="kp_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Oransal Kazanç" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="setSetting" Style="{StaticResource MaterialDesignOutlinedButton}" Click="setSetting_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Set Ayar" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="startAdress" Style="{StaticResource MaterialDesignOutlinedButton}" Click="startAdress_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Start" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="dacyon" Style="{StaticResource MaterialDesignOutlinedButton}" Click="dacyon_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Dacyon Adresi" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="loadcell" Style="{StaticResource MaterialDesignOutlinedButton}" Click="loadcell_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Loadcell" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+        </WrapPanel>
+
+
+        <WrapPanel Margin="0 120" VerticalAlignment="Top">
+            <materialDesign:Card Width="130" Margin="0 10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="tensionSet" Style="{StaticResource MaterialDesignOutlinedButton}" Click="tensionSet_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Gergi Set" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="manuelAuto" Style="{StaticResource MaterialDesignOutlinedButton}" Click="manuelAuto_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Manuel / Auto" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="startTime" Style="{StaticResource MaterialDesignOutlinedButton}" Click="startTime_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Start Time" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="stopTime" Style="{StaticResource MaterialDesignOutlinedButton}" Click="stopTime_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Stop Time" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="proxSel" Style="{StaticResource MaterialDesignOutlinedButton}" Click="proxSel_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Prox_Sel" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+        </WrapPanel>
+
+        <WrapPanel Margin="0 240 0 0" VerticalAlignment="Top">
+            <materialDesign:Card Width="130" Margin="0 10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="startTime1" Style="{StaticResource MaterialDesignOutlinedButton}" Click="startTime1_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Start Time 1" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="stopTime1" Style="{StaticResource MaterialDesignOutlinedButton}" Click="stopTime1_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Stop Time 1" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="stopVoltage" Style="{StaticResource MaterialDesignOutlinedButton}" Click="stopVoltage_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Stop Çıkış Gerilimi" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="minVoltage" Style="{StaticResource MaterialDesignOutlinedButton}" Click="minVoltage_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Minimum Çıkış Gerilimi" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="16"  Height="40" VerticalAlignment="Center"
+                            x:Name="startVoltage" Style="{StaticResource MaterialDesignOutlinedButton}" Click="startVoltage_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Start Gerilimi" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+        </WrapPanel>
+
+        <WrapPanel Margin="0 360 0 0" VerticalAlignment="Top">
+            <materialDesign:Card Width="130" Margin="0 10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="language" Style="{StaticResource MaterialDesignOutlinedButton}" Click="language_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Dil" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="modbusAdress" Style="{StaticResource MaterialDesignOutlinedButton}" Click="modbusAdress_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Modbus Adresi" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="baudRate" Style="{StaticResource MaterialDesignOutlinedButton}" Click="baudRate_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Baud Rate" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="netWeight" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Net Ağırlık" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="zeroMultipler" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Sıfır Çarpan" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+        </WrapPanel>
+
+        <WrapPanel Margin="0 480 0 0" VerticalAlignment="Top">
+            <materialDesign:Card Width="130" Margin="0 10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="filter" Style="{StaticResource MaterialDesignOutlinedButton}" Click="filter_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Medyan Filtre Değeri" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="filterAverage" Style="{StaticResource MaterialDesignOutlinedButton}" Click="filterAverage_Click"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Ortalama Filtre Değeri" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="filledPocket" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Dolu Kefe" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="130" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="68">
+                <Grid Height="68" VerticalAlignment="Top">
+                    <Button Margin="0,0,0,28" Background="Transparent" Content="0" Foreground="Black"
+                            BorderBrush="Transparent" FontSize="21"  Height="40" VerticalAlignment="Center"
+                            x:Name="calibration" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Text="Kalibrasyon" Margin="0,43,0,9" Foreground="red"/>
+
+                </Grid>
+            </materialDesign:Card>
+        </WrapPanel>
+    </Grid>
+
+</UserControl>

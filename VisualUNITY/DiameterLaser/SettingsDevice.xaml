@@ -1,0 +1,444 @@
+﻿<UserControl x:Class="VisualUNITY.DiameterLast.SettingsDevice"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:language ="clr-namespace:VisualUNITY.Languages"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:VisualUNITY" 
+             mc:Ignorable="d" 
+             d:DesignHeight="680" d:DesignWidth="1300" Background="White">
+
+    <UserControl.Resources>
+        <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Grid">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" 
+                                           Height="Auto" Fill="Transparent"/>
+                            <Border x:Name="Rectangle1" CornerRadius="10 0 0 10" HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch" Width="Auto" Height="Auto" 
+                                        Background="{TemplateBinding Background}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="Horizontal">
+                                <Setter TargetName="Rectangle1" Property="Width" Value="Auto"/>
+                                <Setter TargetName="Rectangle1" Property="Height" Value="7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--SCROLLBARS-->
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Foreground" Value="#AAA8341A"/>
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="Width" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="GridRoot" Width="12" Background="{x:Null}">
+                            <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="False">
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" 
+                                               Style="{DynamicResource ScrollThumbs}"/>
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="False"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="False"/>
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                                <Setter Value="{DynamicResource ButtonSelectBrush}" 
+                                            TargetName="Thumb" Property="Background"/>
+                            </Trigger>
+                            <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                                <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                            <Trigger Property="Orientation" Value="Horizontal">
+                                <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Width" Value="Auto"/>
+                                <Setter Property="Height" Value="12"/>
+                                <Setter TargetName="Thumb" Property="Tag" Value="Horizontal"/>
+                                <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand"/>
+                                <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <WrapPanel Margin="0,1,0,-1">
+            <materialDesign:Card Width="140" Margin="0 10 30 0" UniformCornerRadius="20" x:Name="device1Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" x:Name="image1" MouseLeftButtonDown="devicesSettings1" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 1" x:Name="device1Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 1" x:Name="operator1Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings1" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 10 30 0" UniformCornerRadius="20" x:Name="device2Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings2" x:Name="image2" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 2" x:Name="device2Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 2" x:Name="operator2Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings2" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 10 30 0" UniformCornerRadius="20" x:Name="device3Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings3" x:Name="image3" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 3" x:Name="device3Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 3" x:Name="operator3Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings3" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 10 30 0" UniformCornerRadius="20" x:Name="device4Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings4" x:Name="image4" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 4" x:Name="device4Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 4" x:Name="operator4Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings4" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 10 30 0" UniformCornerRadius="20" x:Name="device5Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings5" x:Name="image5" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 5" x:Name="device5Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 5" x:Name="operator5Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings5" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 10 30 0" UniformCornerRadius="20" x:Name="device6Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings6" x:Name="image6" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 6" x:Name="device6Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 6" x:Name="operator6Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings6" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 10 30 0" UniformCornerRadius="20" x:Name="device7Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings7" x:Name="image7" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 7" x:Name="device7Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 7" x:Name="operator7Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings7" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 50 30 0" UniformCornerRadius="20" x:Name="device8Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings8"  x:Name="image8" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 8" x:Name="device8Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 8" x:Name="operator8Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings8" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 50 30 0" UniformCornerRadius="20" x:Name="device9Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings9" x:Name="image9" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 9" x:Name="device9Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 9" x:Name="operator9Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings9" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 50 30 0" UniformCornerRadius="20" x:Name="device10Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings10" x:Name="image10" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 10" x:Name="device10Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 10" x:Name="operator10Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings10" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 50 30 0" UniformCornerRadius="20" x:Name="device11Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings11"  x:Name="image11" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 11" x:Name="device11Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 11" x:Name="operator11Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings11" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 50 30 0" UniformCornerRadius="20" x:Name="device12Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings12" x:Name="image12" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 12" x:Name="device12Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 12" x:Name="operator12Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings12" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 50 30 0" UniformCornerRadius="20" x:Name="device13Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings13" x:Name="image13" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 13" x:Name="device13Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 13" x:Name="operator13Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings13" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="140" Margin="0 50 30 0" UniformCornerRadius="20" x:Name="device14Card" Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image MouseLeftButtonDown="devicesSettings14" x:Name="image14" Source="Assets\device_default.png" Height="50" Width="50" Stretch="UniformToFill" Margin="0,0,0.4,0" />
+                    <Separator Grid.Row="0" Style="{StaticResource MaterialDesignDarkSeparator}" VerticalAlignment="Bottom" />
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock FontWeight="Bold" Text="Cihaz 14" x:Name="device14Text"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="Operatör 14" x:Name="operator14Text"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                        <Button Click="devicesSettings14" Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:PackIcon Kind="CogOutline" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+        </WrapPanel>
+
+        <ComboBox materialDesign:HintAssist.Hint="{x:Static language:language.parity}" ItemsSource="{Binding LongListToTestComboVirtualization}" x:Name="parity" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                          VerticalAlignment="Top" Width="150" HorizontalAlignment="Left" Margin="30,492,0,0">
+            <ComboBoxItem Content="Even"/>
+            <ComboBoxItem Content="Mark"/>
+            <ComboBoxItem Content="None"/>
+            <ComboBoxItem Content="Odd"/>
+            <ComboBoxItem Content="Space"/>
+        </ComboBox>
+        <ComboBox materialDesign:HintAssist.Hint="{x:Static language:language.stopBit}" ItemsSource="{Binding LongListToTestComboVirtualization}" x:Name="stopBit" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                          VerticalAlignment="Top" Width="150" HorizontalAlignment="Left" Margin="250,492,0,0">
+            <ComboBoxItem Content="None"/>
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="1.5"/>
+            <ComboBoxItem Content="2"/>
+        </ComboBox>
+        <ComboBox materialDesign:HintAssist.Hint="{x:Static language:language.baudRate}" ItemsSource="{Binding LongListToTestComboVirtualization}" x:Name="baudRate" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" VerticalAlignment="Top" HorizontalAlignment="Left"
+                          Width="150" Height="41" Margin="458,491,0,0">
+            <ComboBoxItem Content="2400"/>
+            <ComboBoxItem Content="4800"/>
+            <ComboBoxItem Content="9600"/>
+            <ComboBoxItem Content="19200"/>
+            <ComboBoxItem Content="38400"/>
+            <ComboBoxItem Content="57600"/>
+            <ComboBoxItem Content="115200"/>
+        </ComboBox>
+        <Button Width="150"  Content="{x:Static language:language.save}" Background="#FF3A6DB7"  Margin="673,500,0,0"
+                        BorderBrush="#FF3A6DB7" Click="save" VerticalAlignment="Top" HorizontalAlignment="Left" />
+
+        <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="Snackbar"
+                                     VerticalAlignment="Top" HorizontalAlignment="Center" Margin="506,600,506,0" />
+        
+        <Grid VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Margin="910,505,0,0" Height="24" Grid.Row="0">
+                <Label Content="{x:Static language:language.writing}" />
+                <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" HorizontalAlignment="Right" 
+                              Background="#FF37FF32" Foreground="#DD000000" x:Name="writingCheck">
+                    <materialDesign:PackIcon Kind="CloseThick" RenderTransformOrigin=".5,.5">
+                    </materialDesign:PackIcon>
+                    <materialDesign:ToggleButtonAssist.OnContent>
+                        <materialDesign:PackIcon Kind="CheckBold" />
+                    </materialDesign:ToggleButtonAssist.OnContent>
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                        <SolidColorBrush Color="Green" />
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                        <SolidColorBrush Color="Red" />
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                </ToggleButton>
+            </Grid>
+    </Grid>
+</UserControl>

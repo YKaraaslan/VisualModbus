@@ -1,0 +1,419 @@
+﻿<Window x:Class="VisualUNITY.DiameterLast.DeviceWork2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:language ="clr-namespace:VisualUNITY.Languages"
+        xmlns:local="clr-namespace:VisualUNITY" WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" Icon="Assets\Logo.ico"
+        mc:Ignorable="d" MinHeight="700" MinWidth="1350" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Title="{x:Static language:language.deviceData}" Height="700" Width="1350">
+
+    <Window.Resources>
+        <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Grid">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" 
+                                           Height="Auto" Fill="Transparent"/>
+                            <Border x:Name="Rectangle1" CornerRadius="10 0 0 10" HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch" Width="Auto" Height="Auto" 
+                                        Background="{TemplateBinding Background}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="Horizontal">
+                                <Setter TargetName="Rectangle1" Property="Width" Value="Auto"/>
+                                <Setter TargetName="Rectangle1" Property="Height" Value="7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--SCROLLBARS-->
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Foreground" Value="#AAA8341A"/>
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="Width" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="GridRoot" Width="12" Background="{x:Null}">
+                            <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="False">
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" 
+                                               Style="{DynamicResource ScrollThumbs}"/>
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="False"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="False"/>
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                                <Setter Value="{DynamicResource ButtonSelectBrush}" 
+                                            TargetName="Thumb" Property="Background"/>
+                            </Trigger>
+                            <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                                <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                            <Trigger Property="Orientation" Value="Horizontal">
+                                <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Width" Value="Auto"/>
+                                <Setter Property="Height" Value="12"/>
+                                <Setter TargetName="Thumb" Property="Tag" Value="Horizontal"/>
+                                <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand"/>
+                                <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Label Foreground="Black" Content="Şirket İsmi" x:Name="companyName"
+               FontFamily="Comic sans ms" Margin="319,3,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <materialDesign:PackIcon Kind="user" Width="20" Height="20" VerticalAlignment="Top" Margin="39,4,0,0" Foreground="#FF1C57CB" />
+        <Label x:Name="operatorName" Foreground="Black" Content="Operatör" Margin="59,2,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <materialDesign:PackIcon Kind="Devices" Width="20" Height="20" VerticalAlignment="Top" Margin="39,29,0,0" Foreground="#FF1C57CB" />
+        <Label x:Name="deviceName" Foreground="Black" Content="Cihaz" Margin="59,27,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <materialDesign:PackIcon Kind="Company" Width="20" Height="20" VerticalAlignment="Top" Margin="300,6,0,0" Foreground="#FF1C57CB" />
+        <materialDesign:PackIcon Kind="ProjectorScreen" Width="20" Height="20" VerticalAlignment="Top" Margin="300,29,0,0" Foreground="#FF1C57CB" />
+        <Label x:Name="projectName" Foreground="Black" Content="Lorem ipsum dolor sit amet, consectetur adipiscing elit" Margin="319,28,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <materialDesign:PackIcon Kind="Usb" Width="20" Height="20" VerticalAlignment="Top" Margin="561,6,0,0" Foreground="#FF1C57CB" />
+        <Label Foreground="Black" Content="Ürün İsmi" x:Name="productName"
+               FontFamily="Comic sans ms" Margin="582,3,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Bottom" Margin="20,80,20,230" DisableAnimations="True" >
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Month" Labels="{Binding Labels}"></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+        </lvc:CartesianChart>
+
+        <WrapPanel Grid.Row="1" Width="1150" Margin="50 0 0 20" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <materialDesign:Card Width="100" Height="80">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"
+                            x:Name="diameterText"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.diameter}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="115" Height="80" Margin="30 0 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button Click="plusTolerance_Click" x:Name="plusToleranceText" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.plusTolerance}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card  Width="128" Height="80" Margin="30 0 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button  Click="minusTolerance_Click" x:Name="minusToleranceText" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.minusTolerance}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="100" Height="80" Margin="30 0 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="xaxis" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.xAxis}"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="110" Height="80" Margin="30 0 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button Click="diameterSet_Click" x:Name="diameterSetText" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.diameterSet}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="150" Height="80" Margin="30 0 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button Click="diameterDifference_Click"  x:Name="diameterDifferenceText" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.diameterDifference}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="100" Height="80" Margin="30 0 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button Click="display3_Click" x:Name="display3Text" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.display3}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="100" Height="80" Margin="30 0 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="metrajText" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.length}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+
+            <materialDesign:Card Width="100" Height="80" Margin="0 20 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="diameterText2" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.diameter2}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="115" Height="80" Margin="30 20 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button Click="plusTolerance2_Click" x:Name="plusToleranceText2" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.plusTolerance2}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card  Width="128" Height="80" Margin="30 20 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button  Click="minusTolerance2_Click" x:Name="minusToleranceText2" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.minusTolerance2}"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="100" Height="80" Margin="30 20 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="yaxis" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.yAxis}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="110" Height="80" Margin="30 20 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button Click="nc_Click" x:Name="NCText" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13">NC
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Width="150" Height="80" Margin="30 20 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button  Click="even_Click" x:Name="EvenText" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13">Even
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+            
+            <materialDesign:Card Width="100" Height="80" Margin="30 20 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button Click="parp_Click" x:Name="ParpText" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.parp}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Width="100" Height="80" Margin="30 20 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button Click="pari_Click" x:Name="PariText" Margin="0,0,0.4,0" Background="Transparent" Content="0" Foreground="Black" BorderBrush="Transparent" FontSize="20"  Height="40" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Margin="8 10 8 0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontFamily="comic sans ms" FontSize="13" Text="{x:Static language:language.pari}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+        </WrapPanel>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 20 20" Width="135" Height="100"
+                Content="{x:Static language:language.projectFinish}" FontSize="16" Background="#FF58B73A" BorderBrush="#FF58B73A" Click="finishProject_Click"/>
+        <Border CornerRadius="10" Width="100" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right"
+                Margin="0 5 20 5" Background="#FF00DEFF">
+            <Label Content="00:00:00" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"
+                   x:Name="labelTime" Foreground="White"/>
+        </Border>
+    </Grid>
+</Window>

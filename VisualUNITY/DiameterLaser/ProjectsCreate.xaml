@@ -1,0 +1,167 @@
+﻿<Window x:Class="VisualUNITY.DiameterLast.ProjectsCreate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:VisualUNITY"
+        xmlns:language ="clr-namespace:VisualUNITY.Languages"
+        mc:Ignorable="d" ResizeMode="NoResize" Background="White"
+        Title="{x:Static language:language.projectAdd}" Height="570" Width="550" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown" Icon="Assets\Logo.ico">
+
+    <Window.Resources>
+        <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Grid">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" 
+                                           Height="Auto" Fill="Transparent"/>
+                            <Border x:Name="Rectangle1" CornerRadius="10 0 0 10" HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch" Width="Auto" Height="Auto" 
+                                        Background="{TemplateBinding Background}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="Horizontal">
+                                <Setter TargetName="Rectangle1" Property="Width" Value="Auto"/>
+                                <Setter TargetName="Rectangle1" Property="Height" Value="7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--SCROLLBARS-->
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Foreground" Value="#AAA8341A"/>
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="Width" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="GridRoot" Width="12" Background="{x:Null}">
+                            <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="False">
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" 
+                                               Style="{DynamicResource ScrollThumbs}"/>
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="False"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="False"/>
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                                <Setter Value="{DynamicResource ButtonSelectBrush}" 
+                                            TargetName="Thumb" Property="Background"/>
+                            </Trigger>
+                            <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                                <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                            <Trigger Property="Orientation" Value="Horizontal">
+                                <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Width" Value="Auto"/>
+                                <Setter Property="Height" Value="12"/>
+                                <Setter TargetName="Thumb" Property="Tag" Value="Horizontal"/>
+                                <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand"/>
+                                <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <GroupBox Header="{x:Static language:language.projectCreateNEwRegister}" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth0" 
+                  BorderThickness="3" Background="White" materialDesign:ColorZoneAssist.Background="White" materialDesign:ColorZoneAssist.Foreground="Black"  
+                  materialDesign:ColorZoneAssist.Mode="Custom" Margin="10 10 0 0">
+            <Grid>
+                <StackPanel>
+                    <TextBox Width="500" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" VerticalAlignment="Top" Background="White"
+                    materialDesign:HintAssist.Hint="{x:Static language:language.projectName}" materialDesign:HintAssist.Background="White" IsEnabled="{Binding Path=IsChecked, 
+                        ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" x:Name="projectName"/>
+                </StackPanel>
+                <ComboBox materialDesign:HintAssist.Hint="{x:Static language:language.deviceName}" ItemsSource="{Binding LongListToTestComboVirtualization}" x:Name="device" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                          Margin="0,50,16.8,0" VerticalAlignment="Top">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+
+                <ComboBox materialDesign:HintAssist.Hint="{x:Static language:language.companyName}" ItemsSource="{Binding LongListToTestComboVirtualization}" VerticalAlignment="Top"
+                          HorizontalAlignment="Left" x:Name="company"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" Width="335" Margin="0 100 0 0">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <Button Width="125" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,107,19.8,0" Content="{x:Static language:language.companyAdd}" Background="#FF3A6DB7" 
+                        BorderBrush="#FF3A6DB7" Click="addCompany"/>
+
+
+                <ComboBox materialDesign:HintAssist.Hint="{x:Static language:language.productName}" ItemsSource="{Binding LongListToTestComboVirtualization}" VerticalAlignment="Top" HorizontalAlignment="Left"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" Width="335" Margin="0 150 0 0" x:Name="product">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <Button Width="125" HorizontalAlignment="Right" Margin="0,157,19.8,0" Content="{x:Static language:language.productAdd}" Background="#FF3A49B7" 
+                        BorderBrush="#FF3A6DB7" VerticalAlignment="Top" Click="addProduct"/>
+
+                <ComboBox materialDesign:HintAssist.Hint="{x:Static language:language.operators}" ItemsSource="{Binding LongListToTestComboVirtualization}" VerticalAlignment="Top" HorizontalAlignment="Left"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" Width="500" Margin="0 200 0 0" x:Name="operators">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <DatePicker  Margin="0 250 0 0" Width="250" materialDesign:HintAssist.Hint="{x:Static language:language.dateDue}" HorizontalAlignment="Left"
+                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" VerticalAlignment="Top" x:Name="dateEnd" FirstDayOfWeek="Monday"/>
+
+                <materialDesign:TimePicker Is24Hours="True" x:Name="timeEnd" Width="230" materialDesign:HintAssist.Hint="{x:Static language:language.dateDueTime}"
+                                           
+                                           Style="{StaticResource MaterialDesignFloatingHintTimePicker}" Margin="0 250 15 0" VerticalAlignment="Top"  HorizontalAlignment="Right" 
+                                           SelectedTimeFormat="Long" SelectedTimeChanged="timeEnd_SelectedTimeChanged"/>
+
+                <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" HorizontalAlignment="Left" Margin="0 310 0 0"
+    VerticalAlignment="Top" Height="100" Width="500" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" x:Name="explanation"
+    materialDesign:HintAssist.Hint="{x:Static language:language.explanation}" materialDesign:HintAssist.Background="White" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+                <Button Width="250" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                        Margin="0 430 15 0" Content="{x:Static language:language.save}" Background="#FF65B73A" 
+                        BorderBrush="#FF65B73A" Click="createProject"/>
+            </Grid>
+        </GroupBox>
+        <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="Snackbar"
+                                     VerticalAlignment="Bottom" HorizontalAlignment="Center"  Margin="0 0 0 5"/>
+    </Grid>
+</Window>

@@ -1,0 +1,1405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0172C9B3-A28C-47AE-9542-740AF1A3EC1D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>VisualUNITY</RootNamespace>
+    <AssemblyName>VisualUNITY</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin, Version=5.14.5506.26196, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxMin.5.14.5506.26202\lib\net40\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.6.7\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ColorPickerWPF, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ColorPickerWPF.1.0.9\lib\net461\ColorPickerWPF.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyModbus, Version=5.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EasyModbusTCP.5.5.0\lib\EasyModbus.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.Core, Version=2.0.1.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.Core.2.0.1\lib\net40\GMap.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsPresentation, Version=2.0.1.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.WinPresentation.2.0.1\lib\net40\GMap.NET.WindowsPresentation.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Mail, Version=3.0.20174.2011, Culture=neutral, PublicKeyToken=6dc438ab78a525b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mail.dll.3.0.20174.2011\lib\net45\Mail.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.2.6.1513, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.2.6\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=3.1.3.1513, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.3.1.3\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKit, Version=2.9.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.2.9.1\lib\net47\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NModbus4, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NModbus4.2.1.0\lib\net40\NModbus4.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="ShowMeTheXAML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ShowMeTheXAML.1.0.12\lib\net45\ShowMeTheXAML.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.113.1\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.113.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.113.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WriteableBitmapEx.Wpf, Version=1.6.7.0, Culture=neutral, PublicKeyToken=50375ca6144f1c69, processorArchitecture=MSIL">
+      <HintPath>..\packages\WriteableBitmapEx.1.6.7\lib\net40\WriteableBitmapEx.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="DiameterLaser\AdminConfirmation.xaml.cs">
+      <DependentUpon>AdminConfirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Assets\Variables.cs" />
+    <Compile Include="DiameterLaser\BlurEffect.cs" />
+    <Compile Include="ChooseScreen.xaml.cs">
+      <DependentUpon>ChooseScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\CompanyAdd.xaml.cs">
+      <DependentUpon>CompanyAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\ConnectionChooser.cs" />
+    <Compile Include="DiameterLaser\CustomerAllAmount.xaml.cs">
+      <DependentUpon>CustomerAllAmount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\CustomerCompanyAmount.xaml.cs">
+      <DependentUpon>CustomerCompanyAmount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\CustomerCompanyToDoAmount.xaml.cs">
+      <DependentUpon>CustomerCompanyToDoAmount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\CustomerInformation.xaml.cs">
+      <DependentUpon>CustomerInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\CustomerInformationToDo.xaml.cs">
+      <DependentUpon>CustomerInformationToDo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Customers.xaml.cs">
+      <DependentUpon>Customers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Devices.xaml.cs">
+      <DependentUpon>Devices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\DeviceShowOperator.xaml.cs">
+      <DependentUpon>DeviceShowOperator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\DevicesSettings.xaml.cs">
+      <DependentUpon>DevicesSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\DevicesWrite.xaml.cs">
+      <DependentUpon>DevicesWrite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\DeviceWork.xaml.cs">
+      <DependentUpon>DeviceWork.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\DeviceWork2.xaml.cs">
+      <DependentUpon>DeviceWork2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Languages\language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>language.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Languages\language.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>language.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Mail.xaml.cs">
+      <DependentUpon>Mail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\MailList.xaml.cs">
+      <DependentUpon>MailList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\NotificationItems.xaml.cs">
+      <DependentUpon>NotificationItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Notifications.xaml.cs">
+      <DependentUpon>Notifications.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\OperatorProjectsDone.xaml.cs">
+      <DependentUpon>OperatorProjectsDone.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\OperatorProjectsDoneByDate.xaml.cs">
+      <DependentUpon>OperatorProjectsDoneByDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\OperatorProjectToDo.xaml.cs">
+      <DependentUpon>OperatorProjectToDo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Operators.xaml.cs">
+      <DependentUpon>Operators.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\OperatorsInformation.xaml.cs">
+      <DependentUpon>OperatorsInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\OperatorsSettings.xaml.cs">
+      <DependentUpon>OperatorsSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordForgotten.xaml.cs">
+      <DependentUpon>PasswordForgotten.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\PickersViewModel.cs" />
+    <Compile Include="DiameterLaser\ProductAdd.xaml.cs">
+      <DependentUpon>ProductAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\ProductRegisteredInformation.xaml.cs">
+      <DependentUpon>ProductRegisteredInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Products.xaml.cs">
+      <DependentUpon>Products.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\ProductsAmount.xaml.cs">
+      <DependentUpon>ProductsAmount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\ProductsInformation.xaml.cs">
+      <DependentUpon>ProductsInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\ProjectAll.xaml.cs">
+      <DependentUpon>ProjectAll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\ProjectOpen.xaml.cs">
+      <DependentUpon>ProjectOpen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Projects.xaml.cs">
+      <DependentUpon>Projects.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\ProjectsCreate.xaml.cs">
+      <DependentUpon>ProjectsCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\ProjectsFinishExplanation.xaml.cs">
+      <DependentUpon>ProjectsFinishExplanation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\ProjectsToDo.xaml.cs">
+      <DependentUpon>ProjectsToDo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\ProjectsByDate.xaml.cs">
+      <DependentUpon>ProjectsByDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Projects_DataSet.cs">
+      <DependentUpon>Projects_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Projects_DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Projects_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Report1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\Report1.Designer.cs">
+      <DependentUpon>Report1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Report10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\Report10.Designer.cs">
+      <DependentUpon>Report10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Report11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\Report11.Designer.cs">
+      <DependentUpon>Report11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Report2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\Report2.Designer.cs">
+      <DependentUpon>Report2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Report3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\Report3.Designer.cs">
+      <DependentUpon>Report3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Report4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\Report4.Designer.cs">
+      <DependentUpon>Report4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Report5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\Report5.Designer.cs">
+      <DependentUpon>Report5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Report6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\Report6.Designer.cs">
+      <DependentUpon>Report6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Report7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\Report7.Designer.cs">
+      <DependentUpon>Report7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Report8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\Report8.Designer.cs">
+      <DependentUpon>Report8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Report9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\Report9.Designer.cs">
+      <DependentUpon>Report9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report1_DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report1_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Reports.xaml.cs">
+      <DependentUpon>Reports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\ReportsGraphic.xaml.cs">
+      <DependentUpon>ReportsGraphic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\SearchCustomers.xaml.cs">
+      <DependentUpon>SearchCustomers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\SearchProducts.xaml.cs">
+      <DependentUpon>SearchProducts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\SearchProjectsOpen.xaml.cs">
+      <DependentUpon>SearchProjectsOpen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\SearchProjectsToDoOpen.xaml.cs">
+      <DependentUpon>SearchProjectsToDoOpen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\Serial.cs" />
+    <Compile Include="DiameterLaser\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\SettingsDevice.xaml.cs">
+      <DependentUpon>SettingsDevice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\SettingsDeviceSettings.xaml.cs">
+      <DependentUpon>SettingsDeviceSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\SettingsUser.xaml.cs">
+      <DependentUpon>SettingsUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SignUp.xaml.cs">
+      <DependentUpon>SignUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice1.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice10.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice11.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice12.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice13.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice14.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice2.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice3.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice4.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice5.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice6.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice7.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice8.cs" />
+    <Compile Include="DiameterLaser\VariablesForDevice9.cs" />
+    <Compile Include="TensionControl\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsCalibration.xaml.cs">
+      <DependentUpon>SettingsCalibration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsFilledPocket.xaml.cs">
+      <DependentUpon>SettingsFilledPocket.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsZeroMultipler.xaml.cs">
+      <DependentUpon>SettingsZeroMultipler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\TensionMail.xaml.cs">
+      <DependentUpon>TensionMail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\TensionMailList.xaml.cs">
+      <DependentUpon>TensionMailList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\VarsTensionMail.cs" />
+    <Compile Include="Transmitter\DeviceTransmitter.xaml.cs">
+      <DependentUpon>DeviceTransmitter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transmitter\TransmitterMail.xaml.cs">
+      <DependentUpon>TransmitterMail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transmitter\TransmitterMailList.xaml.cs">
+      <DependentUpon>TransmitterMailList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transmitter\VarsTransmitter.cs" />
+    <Compile Include="Transmitter\WindowMain.xaml.cs">
+      <DependentUpon>WindowMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vars.cs" />
+    <Compile Include="DiameterLaser\VarsCompanies.cs" />
+    <Compile Include="DiameterLaser\VarsCompanyGraphicDashboard.cs" />
+    <Compile Include="DiameterLaser\VarsData.cs" />
+    <Compile Include="DiameterLaser\VarsDevices.cs" />
+    <Compile Include="DiameterLaser\VarsGraphic.cs" />
+    <Compile Include="DiameterLaser\VarsLastProjects.cs" />
+    <Compile Include="DiameterLaser\VarsMail.cs" />
+    <Compile Include="DiameterLaser\VarsOperators.cs" />
+    <Compile Include="DiameterLaser\VarsOperatorsName.cs" />
+    <Compile Include="DiameterLaser\VarsProducts.cs" />
+    <Compile Include="DiameterLaser\VarsProjectsAll.cs" />
+    <Compile Include="DiameterLaser\VarsProjectsToDo.cs" />
+    <Compile Include="WebGuide\DeviceWebGuide.xaml.cs">
+      <DependentUpon>DeviceWebGuide.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WebGuide\HomeScreen.xaml.cs">
+      <DependentUpon>HomeScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WebGuide\VarsWebGuide.cs" />
+    <Compile Include="WebGuide\WebGuideMail.xaml.cs">
+      <DependentUpon>WebGuideMail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WebGuide\WebGuideMailList.xaml.cs">
+      <DependentUpon>WebGuideMailList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomeScreen.xaml.cs">
+      <DependentUpon>WelcomeScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder1.Designer.cs">
+      <DependentUpon>WorkOrder1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder10.Designer.cs">
+      <DependentUpon>WorkOrder10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder11.Designer.cs">
+      <DependentUpon>WorkOrder11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder12.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder12.Designer.cs">
+      <DependentUpon>WorkOrder12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder13.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder13.Designer.cs">
+      <DependentUpon>WorkOrder13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder14.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder14.Designer.cs">
+      <DependentUpon>WorkOrder14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder2.Designer.cs">
+      <DependentUpon>WorkOrder2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder3.Designer.cs">
+      <DependentUpon>WorkOrder3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder4.Designer.cs">
+      <DependentUpon>WorkOrder4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder5.Designer.cs">
+      <DependentUpon>WorkOrder5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder6.Designer.cs">
+      <DependentUpon>WorkOrder6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder7.Designer.cs">
+      <DependentUpon>WorkOrder7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder8.Designer.cs">
+      <DependentUpon>WorkOrder8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiameterLaser\WorkOrder9.Designer.cs">
+      <DependentUpon>WorkOrder9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\Device.xaml.cs">
+      <DependentUpon>Device.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\PropertiesSettings.xaml.cs">
+      <DependentUpon>PropertiesSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsBaudRate.xaml.cs">
+      <DependentUpon>SettingsBaudRate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsDacyon.xaml.cs">
+      <DependentUpon>SettingsDacyon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsFilterAverage.xaml.cs">
+      <DependentUpon>SettingsFilterAverage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsFilterMedian.xaml.cs">
+      <DependentUpon>SettingsFilterMedian.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsKP.xaml.cs">
+      <DependentUpon>SettingsKP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsLanguage.xaml.cs">
+      <DependentUpon>SettingsLanguage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsLoadcell.xaml.cs">
+      <DependentUpon>SettingsLoadcell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsManuelAuto.xaml.cs">
+      <DependentUpon>SettingsManuelAuto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsMinVoltage.xaml.cs">
+      <DependentUpon>SettingsMinVoltage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsModBusAdress.xaml.cs">
+      <DependentUpon>SettingsModBusAdress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsProx.xaml.cs">
+      <DependentUpon>SettingsProx.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsSetSettings.xaml.cs">
+      <DependentUpon>SettingsSetSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsStart.xaml.cs">
+      <DependentUpon>SettingsStart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsStartTime.xaml.cs">
+      <DependentUpon>SettingsStartTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsStartTime1.xaml.cs">
+      <DependentUpon>SettingsStartTime1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsStartVoltage.xaml.cs">
+      <DependentUpon>SettingsStartVoltage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsStopTime.xaml.cs">
+      <DependentUpon>SettingsStopTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsStopTime1.xaml.cs">
+      <DependentUpon>SettingsStopTime1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsStopVoltage.xaml.cs">
+      <DependentUpon>SettingsStopVoltage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\SettingsTensionSet.xaml.cs">
+      <DependentUpon>SettingsTensionSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TensionControl\VarsTension.cs" />
+    <Page Include="DiameterLaser\AdminConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChooseScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\CompanyAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\CustomerAllAmount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\CustomerCompanyAmount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\CustomerCompanyToDoAmount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\CustomerInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\CustomerInformationToDo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\Customers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\Devices.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\DeviceShowOperator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\DevicesSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\DevicesWrite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\DeviceWork.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\DeviceWork2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\Mail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\MailList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\NotificationItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\Notifications.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\OperatorProjectsDone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\OperatorProjectsDoneByDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\OperatorProjectToDo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\Operators.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\OperatorsInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\OperatorsSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PasswordForgotten.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\ProductAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\ProductRegisteredInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\Products.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\ProductsAmount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\ProductsInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\ProjectAll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\ProjectOpen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\Projects.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\ProjectsCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\ProjectsFinishExplanation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\ProjectsToDo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\ProjectsByDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\Reports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\ReportsGraphic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\SearchCustomers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\SearchProducts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\SearchProjectsOpen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\SearchProjectsToDoOpen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\SettingsDevice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\SettingsDeviceSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiameterLaser\SettingsUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SignUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SplashScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="TensionControl\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TensionControl\SettingsCalibration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TensionControl\SettingsFilledPocket.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TensionControl\SettingsZeroMultipler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TensionControl\TensionMail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TensionControl\TensionMailList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transmitter\DeviceTransmitter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transmitter\TransmitterMail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transmitter\TransmitterMailList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transmitter\WindowMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WebGuide\DeviceWebGuide.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WebGuide\HomeScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WebGuide\WebGuideMail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WebGuide\WebGuideMailList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WelcomeScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TensionControl\Device.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\PropertiesSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsBaudRate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsDacyon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsFilterAverage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsFilterMedian.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsKP.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsLanguage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsLoadcell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsManuelAuto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsMinVoltage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsModBusAdress.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsProx.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsSetSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsStart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsStartTime.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsStartTime1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsStartVoltage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsStopTime.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsStopTime1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsStopVoltage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TensionControl\SettingsTensionSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport1.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport10.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport11.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport12.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport13.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport14.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport2.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport3.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport4.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport5.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport6.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport7.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport8.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\DevicesWorkOrderReport9.rdlc" />
+    <EmbeddedResource Include="Languages\language.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>language.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\language.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>language.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report1.en.resx">
+      <DependentUpon>Report1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report1.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\Report1.resx">
+      <DependentUpon>Report1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report10.en.resx">
+      <DependentUpon>Report10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report10.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\Report10.resx">
+      <DependentUpon>Report10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report11.en.resx">
+      <DependentUpon>Report11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report11.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\Report11.resx">
+      <DependentUpon>Report11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report2.en.resx">
+      <DependentUpon>Report2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report2.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\Report2.resx">
+      <DependentUpon>Report2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report3.en.resx">
+      <DependentUpon>Report3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report3.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\Report3.resx">
+      <DependentUpon>Report3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report4.en.resx">
+      <DependentUpon>Report4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report4.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\Report4.resx">
+      <DependentUpon>Report4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report5.en.resx">
+      <DependentUpon>Report5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report5.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\Report5.resx">
+      <DependentUpon>Report5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report6.en.resx">
+      <DependentUpon>Report6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report6.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\Report6.resx">
+      <DependentUpon>Report6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report7.en.resx">
+      <DependentUpon>Report7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report7.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\Report7.resx">
+      <DependentUpon>Report7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report8.en.resx">
+      <DependentUpon>Report8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report8.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\Report8.resx">
+      <DependentUpon>Report8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report9.en.resx">
+      <DependentUpon>Report9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\Report9.rdlc" />
+    <EmbeddedResource Include="DiameterLaser\Report9.resx">
+      <DependentUpon>Report9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder1.en.resx">
+      <DependentUpon>WorkOrder1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder1.resx">
+      <DependentUpon>WorkOrder1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder10.en.resx">
+      <DependentUpon>WorkOrder10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder10.resx">
+      <DependentUpon>WorkOrder10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder11.en.resx">
+      <DependentUpon>WorkOrder11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder11.resx">
+      <DependentUpon>WorkOrder11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder12.en.resx">
+      <DependentUpon>WorkOrder12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder12.resx">
+      <DependentUpon>WorkOrder12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder13.en.resx">
+      <DependentUpon>WorkOrder13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder13.resx">
+      <DependentUpon>WorkOrder13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder14.en.resx">
+      <DependentUpon>WorkOrder14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder14.resx">
+      <DependentUpon>WorkOrder14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder2.en.resx">
+      <DependentUpon>WorkOrder2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder2.resx">
+      <DependentUpon>WorkOrder2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder3.en.resx">
+      <DependentUpon>WorkOrder3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder3.resx">
+      <DependentUpon>WorkOrder3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder4.en.resx">
+      <DependentUpon>WorkOrder4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder4.resx">
+      <DependentUpon>WorkOrder4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder5.en.resx">
+      <DependentUpon>WorkOrder5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder5.resx">
+      <DependentUpon>WorkOrder5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder6.en.resx">
+      <DependentUpon>WorkOrder6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder6.resx">
+      <DependentUpon>WorkOrder6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder7.en.resx">
+      <DependentUpon>WorkOrder7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder7.resx">
+      <DependentUpon>WorkOrder7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder8.en.resx">
+      <DependentUpon>WorkOrder8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder8.resx">
+      <DependentUpon>WorkOrder8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder9.en.resx">
+      <DependentUpon>WorkOrder9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiameterLaser\WorkOrder9.resx">
+      <DependentUpon>WorkOrder9.cs</DependentUpon>
+    </EmbeddedResource>
+    <Resource Include="Transmitter\Fonts\Roboto-Light.ttf" />
+    <Resource Include="WebGuide\Fonts\Roboto-Light.ttf" />
+    <Resource Include="TensionControl\Fonts\Roboto-Light.ttf" />
+    <Resource Include="DiameterLaser\Fonts\Roboto-Light.ttf" />
+    <None Include="Report1_DataSet.xsc">
+      <DependentUpon>Report1_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Report1_DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Report1_DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report1_DataSet.xss">
+      <DependentUpon>Report1_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Pdf\capolcer.pdf" />
+    <None Include="Pdf\unity.pdf" />
+    <None Include="Projects_DataSet.xsc">
+      <DependentUpon>Projects_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Projects_DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Projects_DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Projects_DataSet.xss">
+      <DependentUpon>Projects_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WebGuide\Fonts\LICENSE.txt" />
+    <Resource Include="WebGuide\Assets\properties.png" />
+    <Resource Include="WebGuide\Assets\img_signout.png" />
+    <Resource Include="WebGuide\Assets\img_message.png" />
+    <Resource Include="WebGuide\Assets\img_home.png" />
+    <Resource Include="TensionControl\Fonts\LICENSE.txt" />
+    <Resource Include="TensionControl\Assets\img_signout.png" />
+    <Resource Include="TensionControl\Assets\img_message.png" />
+    <Resource Include="TensionControl\Assets\img_home.png" />
+    <Resource Include="TensionControl\Assets\properties.png" />
+    <Resource Include="DiameterLaser\Assets\closeBtn_default.png" />
+    <Resource Include="DiameterLaser\Assets\closeBtn_MouseOver.png" />
+    <Resource Include="DiameterLaser\Assets\customers.png" />
+    <Resource Include="DiameterLaser\Assets\device_default.png" />
+    <Resource Include="DiameterLaser\Assets\device_ready.png" />
+    <Resource Include="DiameterLaser\Assets\device_settings.png" />
+    <Resource Include="DiameterLaser\Assets\device_working.png" />
+    <Resource Include="DiameterLaser\Assets\deviceImage.png" />
+    <Resource Include="DiameterLaser\Assets\devices.png" />
+    <Resource Include="DiameterLaser\Assets\img_background.png" />
+    <Resource Include="DiameterLaser\Assets\img_contact.png" />
+    <Resource Include="DiameterLaser\Assets\img_home.png" />
+    <Resource Include="DiameterLaser\Assets\img_map.png" />
+    <Resource Include="DiameterLaser\Assets\img_message.png" />
+    <Resource Include="DiameterLaser\Assets\img_setting.png" />
+    <Resource Include="DiameterLaser\Assets\img_signout.png" />
+    <Resource Include="DiameterLaser\Assets\LOGO.ico" />
+    <Resource Include="DiameterLaser\Assets\Logo.png" />
+    <Resource Include="DiameterLaser\Assets\operator1.png" />
+    <Resource Include="DiameterLaser\Assets\operator10.png" />
+    <Resource Include="DiameterLaser\Assets\operator11.png" />
+    <Resource Include="DiameterLaser\Assets\operator12.png" />
+    <Resource Include="DiameterLaser\Assets\operator13.png" />
+    <Resource Include="DiameterLaser\Assets\operator14.png" />
+    <Resource Include="DiameterLaser\Assets\operator2.png" />
+    <Resource Include="DiameterLaser\Assets\operator3.png" />
+    <Resource Include="DiameterLaser\Assets\operator4.png" />
+    <Resource Include="DiameterLaser\Assets\operator5.png" />
+    <Resource Include="DiameterLaser\Assets\operator6.png" />
+    <Resource Include="DiameterLaser\Assets\operator7.png" />
+    <Resource Include="DiameterLaser\Assets\operator8.png" />
+    <Resource Include="DiameterLaser\Assets\operator9.png" />
+    <Resource Include="DiameterLaser\Assets\operatorImage.png" />
+    <Resource Include="DiameterLaser\Assets\products.png" />
+    <Resource Include="DiameterLaser\Assets\project.png" />
+    <Resource Include="DiameterLaser\Assets\reports.png" />
+    <Resource Include="DiameterLaser\Assets\tgBtn_default.png" />
+    <Resource Include="DiameterLaser\Assets\tgBtn_MouseOver.png" />
+    <Resource Include="DiameterLaser\Assets\turn-off.png" />
+    <Resource Include="DiameterLaser\Assets\user.png" />
+    <Resource Include="DiameterLaser\Fonts\LICENSE.txt" />
+    <Resource Include="Assets\closeBtn_MouseOver.png" />
+    <Resource Include="Assets\LOGO.ico" />
+    <Resource Include="Assets\Logo.png" />
+    <Resource Include="Assets\turn-off.png" />
+    <Content Include="Projects.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Projects_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Projects.mdf</DependentUpon>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Transmitter\Fonts\LICENSE.txt" />
+    <Resource Include="Transmitter\Assets\img_home.png" />
+    <Resource Include="Transmitter\Assets\img_message.png" />
+    <Resource Include="Transmitter\Assets\img_signout.png" />
+    <Resource Include="Transmitter\Assets\properties.png" />
+    <Resource Include="TensionControl\Assets\Logo.ico" />
+    <Content Include="Unity.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Unity_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Unity.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SqlLocalDB.13.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2016 Express LocalDB</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.3.1.3\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.3\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.3.1.3\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.3.1.3\build\MaterialDesignThemes.targets'))" />
+    <Error Condition="!Exists('..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets" Condition="Exists('..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets')" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
